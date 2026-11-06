@@ -37,5 +37,38 @@
 After all these local steps, network calls comes into picture starting with DNS lookup for the domain.
 
 
+7. DNS Lookup
+    Domain name is easy to be read by human, but under the hood, it has a corresponding IP address. The browser needs its IP address, such as 192.158.1.38., and build a connection with it.
+- Looking up in caches first
+    - Browser Cache : The browser looks at the browser cache for finding the domain name’s IP address. The browser caches the IP address we have visited recently, with setting a TTL (Time to live). [more on ttl](https://cleanbrowsing.org/learn/what-is-domain-ttl)
+    ![alt text](image-1.png)
+    TTL can diffrent values set by domain owner. but from user machine it can be seen using `dig` command 
+    ![alt text](image-2.png)
 
+    - OS Cache
+
+        `systemd-resolved` runs a local DNS server on local machine at the loopback address `127.0.0.53`. If DNS tool is pointed specifically at that address, it will return the record out of the local cache, including the current counting-down TTL. 
+        ![alt text](image-3.png)
+    - Router cache
+
+        Check the DNS cache in router. The router may have a DNS server by using ISP’s DNS server.
+
+    - ISP Cache
+        if the browser cannot find the website’s IP address in the process above, it continues to looks the cache in the DNS server of your ISP that provides Internet service to you. If the DNS server ISP doesn’t have the cache of the IP address, the ISP will start a DNS lookup for user.
+- Recursive Resolver : If no local cache has the answer, your device sends the query to a recursive resolver, typically provided by your ISP or a public DNS service like Cloudflare (1.1.1.1) or Google (8.8.8.8). The recursive resolver does the heavy lifting. If it doesn't have the answer cached, it performs a queries.
+    
+    - Root Name Servers :
+        The resolver first contacts one of the 13 root name server groups (labeled A through M). The root server doesn't know the IP of robendevs.com or any other whole domain, but it knows which servers are authoritative for .com and returns a referral.
+    - TLD Name Servers :
+        The resolver follows the referral to a .com TLD server. This server doesn't know IP either, but it knows which name servers are authoritative for robendevs.com and returns another referral.
+    - Authoritative Name Server : 
+        Finally, the resolver queries the authoritative name server for example.com. This server has the actual DNS records and returns the IP address (e.g., 93.184.216.34).
+
+Just to know         
+- Caching and TTL : Each DNS response includes a TTL (Time to Live) value that tells resolvers how long to cache the answer. 
+
+- Recursive vs Iterative Queries
+    - Recursive query: The client asks the resolver to do all the work and return the final answer
+    - Iterative query: The resolver asks each server in the chain, receiving referrals to follow
+    - Most client-to-resolver queries are recursive. Resolver-to-server queries are iterative.
 
