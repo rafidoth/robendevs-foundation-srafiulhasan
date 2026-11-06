@@ -86,5 +86,36 @@ DNS record types are instructions that live in authoritative DNS servers and pro
 | NS | The authoritative nameservers for a domain | The domain's name servers |
 
 
+At this point the client has resolved the ip-address and next work is establishment of TCP connection.
+
+
+8. TCP Handshake with Retrieved IP address from DNS 
+- Once the browser receives the IP address of the destination server, it takes that and the given port number from the URL (the HTTP protocol defaults to port 80, and HTTPS to port 443), and makes a call to the system library function named socket and requests a TCP socket stream - `AF_INET `and `SOCK_STREAM`.
+- This request is first passed to the Transport Layer where a TCP segment is crafted. The destination port is added to the header, and a source port is chosen from within the kernel's dynamic port range.
+- This segment is sent to the Network Layer, which wraps an additional IP header. The IP address of the destination server as well as that of the current machine is inserted to form a packet.
+- The packet next arrives at the Link Layer. A frame header is added that includes the MAC address of the machine's NIC as well as the MAC address of the gateway (local router). 
+
+here send and receive happens multiple times in this TCP Handshake.
+
+* Client chooses an initial sequence number (ISN) and sends the packet to the
+  server with the SYN bit set to indicate it is setting the ISN
+* Server receives SYN and if it's in an agreeable mood:
+   * Server chooses its own initial sequence number
+   * Server sets SYN to indicate it is choosing its ISN
+   * Server copies the (client ISN +1) to its ACK field and adds the ACK flag
+     to indicate it is acknowledging receipt of the first packet
+* Client acknowledges the connection by sending a packet:
+   * Increases its own sequence number
+   * Increases the receiver acknowledgment number
+   * Sets ACK field
+* Data is transferred as follows:
+   * As one side sends N data bytes, it increases its SEQ by that number
+   * When the other side acknowledges receipt of that packet (or a string of
+     packets), it sends an ACK packet with the ACK value equal to the last
+     received sequence from the other
+* To close the connection:
+   * The closer sends a FIN packet
+   * The other sides ACKs the FIN packet and sends its own FIN
+   * The closer acknowledges the other side's FIN with an ACK
 
 
