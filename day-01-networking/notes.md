@@ -72,3 +72,19 @@ Just to know
     - Iterative query: The resolver asks each server in the chain, receiving referrals to follow
     - Most client-to-resolver queries are recursive. Resolver-to-server queries are iterative.
 
+
+- Record Types
+DNS record types are instructions that live in authoritative DNS servers and provide information about a domain including what IP address is associated with that domain and how to handle requests for that domain.
+
+| Record | What It Stores | Example |
+|---|---|---|
+| A | IPv4 address for a hostname | robendevs.com → 203.0.113.10 |
+| AAAA | IPv6 address for a hostname | robendevs.com → 2001:db8::10 |
+| CNAME | Alias pointing one hostname to another hostname | www.robendevs.com → robendevs.com |
+| MX | Mail server hostname(s) for a domain, with priority values | Where @robendevs.com email goes |
+| TXT | Arbitrary text, used for SPF, DKIM, domain verification, and more | SPF for email, domain ownership checks |
+| NS | The authoritative nameservers for a domain | The domain's name servers |
+
+
+
+
