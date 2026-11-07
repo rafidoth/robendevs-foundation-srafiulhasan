@@ -1,5 +1,5 @@
-# Internet, networking, HTTP/HTTPS and browser internals
-- Understanding the end-to-end request–response lifecycle, tracing a request from the user's browser (client side) to the server and back, including how the server processes the request and returns the corresponding response and how its being presented to the user.
+# Request Flow in Network
+- Understanding the end-to-end request–response lifecycle, tracing a request from the user's browser (client side) to the server and back
 - Helps to identify the spot where the application is breaking or we can have a vulnerability
 
 
@@ -9,7 +9,7 @@
     - When no protocol or valid domain name is given the browser proceeds to send the text given in the address box to the browser's default web search engine. 
     - In many cases the url has a special piece of text appended to it to tell the search engine that it came from a particular browser's url bar.
 
-    >> for example for I typed "arandomsearchterm" in my brave
+    for example for I typed "arandomsearchterm" in my brave
     ![alt text](image.png)
 
 3. If its an URL, it gets parsed
@@ -174,4 +174,5 @@ syntactically both remain almost same.
 11. Response back to client
 - Response can be JSON or if its an server side rendered application then html. If JSON is sent then the conversion to html happens by any client side rendering technology like react (SPA).
 - there are response codes can be sent meaning different things. [mdn response code doc](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status)
+
 
