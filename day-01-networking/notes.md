@@ -122,12 +122,11 @@ here send and receive happens multiple times in this TCP Handshake.
 9. TLS(Transport Layer Security) handshake
 this happens between browser and by the certificate installed in server side.
 * The client computer sends a ``ClientHello`` message to the server with its
-  TLS version, list of cipher algorithms and compression methods available.
+  TLS version, list of cipher algorithms and compression methods available. It includes ALPN extension listing h2 and http/1.1 for server to decide.
 
 * The server replies with a ``ServerHello`` message to the client with the
   TLS version, selected cipher, selected compression methods and the server's
-  public certificate signed by a CA (Certificate Authority). The certificate
-  contains **a public key that will be used by the client to encrypt the rest of
+  public certificate signed by a CA (Certificate Authority). It includes server's selected http protocol h2 or http/1.1 The certificate contains **a public key that will be used by the client to encrypt the rest of
   the handshake** until a symmetric key can be agreed upon.
 
 * The client verifies the server digital certificate against its list of
@@ -151,7 +150,20 @@ this happens between browser and by the certificate installed in server side.
 
 ![tls](image-4.png)
 
+application data after the handshake is the client’s encrypted HTTP request, for example GET / HTTP/1.1. The server decrypts it with the symmetric key and sends back the HTTP response, encrypted the same way.
 
+10. HTTP Request Entering the server
+HTTP version is decided on the TLS handshake.
+references [rfc 9112](https://www.rfc-editor.org/info/rfc9112/)
+
+![http-req](http-request.png)
+
+- Start-Line (Request-Line or Status-Line)
+- HTTP Headers (Zero or more key-value lines)
+- Empty Line (A bare CRLF marking the end of metadata)
+- Optional Body (The actual payload/data)
+
+syntactically both remain almost same.
 
 
 
