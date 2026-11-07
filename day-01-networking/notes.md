@@ -167,3 +167,11 @@ syntactically both remain almost same.
 
 
 
+> This request gets parsed and processed in server. Application code process the request or reject based on different business logics. then sends the corresponding response back to client the same way.
+
+
+
+11. Response back to client
+- Response can be JSON or if its an server side rendered application then html. If JSON is sent then the conversion to html happens by any client side rendering technology like react (SPA).
+- there are response codes can be sent meaning different things. [mdn response code doc](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status)
+
