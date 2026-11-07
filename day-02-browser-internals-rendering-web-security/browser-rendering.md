@@ -68,3 +68,22 @@ In this example, while the main thread parses the HTML and CSS, the preload scan
 
 Waiting to obtain CSS doesn't block HTML parsing or downloading, but it does block JavaScript because scripts are often used to query CSS properties' impact on elements.
 
+
+
+
+Building the CSSOM tree
+-----
+
+* CSSOM is also tree like data structure. browser converts CSS rules into a style map, this includes a tree of nodes with parent, child and sibling relationships based on the CSS selectors.
+
+* WebKit uses Flex and Bison parser generators to create parsers automatically from the CSS grammar files. As you recall from the parser introduction, Bison creates a bottom up shift-reduce parser. Firefox uses a top down parser written manually.  
+
+
+* In both cases each CSS file is parsed into a StyleSheet object. Each object contains CSS rules. The CSS rule objects contain selector and declaration objects and other objects corresponding to CSS grammar. ![css_tree](css_tree.png)
+
+
+* CSS is render blocking: the browser blocks page rendering until it receives and processes all the CSS. But building the CSSOM is fast and is not displayed in the developer tools. Rather, the "Recalculate Style" metric in developer tools shows the total time it takes to parse CSS, construct the CSSOM tree, and recursively calculate computed styles. Creating the CSSOM generally takes less time than one DNS lookup.
+
+
+
+
