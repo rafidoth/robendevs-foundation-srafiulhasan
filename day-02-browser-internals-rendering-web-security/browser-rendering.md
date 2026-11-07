@@ -86,4 +86,17 @@ Building the CSSOM tree
 
 
 
+Render Tree
+----
+
+* While the DOM tree is being constructed, the browser constructs another tree, the render tree. This tree is of visual elements in the order in which they will be displayed. It is the visual representation of the document. The purpose of this tree is to enable painting the contents in their correct order. Firefox calls the elements in the render tree "frames". WebKit uses the term "renderer" or render object.
+
+
+* The renderers correspond to DOM elements, but the relation is not one to one. Non-visual DOM elements won't be inserted in the render tree. An example is the "head" element. Also elements whose display value was assigned to "none" won't appear in the tree (whereas elements with "hidden" visibility will appear in the tree). ![render_tree](render_tree.png)
+
+
+
+
+
+
 
