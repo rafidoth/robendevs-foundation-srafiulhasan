@@ -96,6 +96,17 @@ Render Tree
 
 
 
+Layout 
+----
+
+* Layout is the process by which the dimensions and location of all the nodes in the render tree are determined.
+
+* To determine the exact size and position of each object, the browser starts at the root of the render tree and traverses it.
+
+* The first time the size and position of each node is determined is called layout. Subsequent recalculations of layout are called reflows. In our example, suppose the initial layout occurs before the image is returned. Since we didn't declare the image dimensions, there will be a reflow once the dimensions are known.
+
+
+
 
 
 
