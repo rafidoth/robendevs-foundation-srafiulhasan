@@ -107,6 +107,16 @@ Layout
 
 
 
+Paint 
+----
+
+* Once the render tree is created and layout occurs, the pixels can be painted to the screen. Repaint can happen without a change in DOM Tree.
+
+
+Composite
+---
+* When sections of the document are drawn in different overlapping layers, compositing is necessary to ensure they are drawn to the screen in the right order and the content renders correctly.
+
 
 
 
