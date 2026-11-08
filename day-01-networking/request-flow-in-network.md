@@ -10,7 +10,7 @@
     - In many cases the url has a special piece of text appended to it to tell the search engine that it came from a particular browser's url bar.
 
     for example for I typed "arandomsearchterm" in my brave
-    ![alt text](image.png)
+    ![alt text](images/image.png)
 
 3. If its an URL, it gets parsed
     ```
@@ -41,14 +41,14 @@ After all these local steps, network calls comes into picture starting with DNS 
     Domain name is easy to be read by human, but under the hood, it has a corresponding IP address. The browser needs its IP address, such as 192.158.1.38., and build a connection with it.
 - Looking up in caches first
     - Browser Cache : The browser looks at the browser cache for finding the domain name’s IP address. The browser caches the IP address we have visited recently, with setting a TTL (Time to live). [more on ttl](https://cleanbrowsing.org/learn/what-is-domain-ttl)
-    ![alt text](image-1.png)
+    ![alt text](images/image-1.png)
     TTL can diffrent values set by domain owner. but from user machine it can be seen using `dig` command 
-    ![alt text](image-2.png)
+    ![alt text](images/image-2.png)
 
     - OS Cache
 
         `systemd-resolved` runs a local DNS server on local machine at the loopback address `127.0.0.53`. If DNS tool is pointed specifically at that address, it will return the record out of the local cache, including the current counting-down TTL. 
-        ![alt text](image-3.png)
+        ![alt text](images/image-3.png)
     - Router cache
 
         Check the DNS cache in router. The router may have a DNS server by using ISP’s DNS server.
@@ -148,7 +148,7 @@ this happens between browser and by the certificate installed in server side.
   with the agreed symmetric key.
 
 
-![tls](image-4.png)
+![tls](images/image-4.png)
 
 application data after the handshake is the client’s encrypted HTTP request, for example GET / HTTP/1.1. The server decrypts it with the symmetric key and sends back the HTTP response, encrypted the same way.
 
@@ -156,7 +156,7 @@ application data after the handshake is the client’s encrypted HTTP request, f
 HTTP version is decided on the TLS handshake.
 references [rfc 9112](https://www.rfc-editor.org/info/rfc9112/)
 
-![http-req](http-request.png)
+![http-req](images/http-request.png)
 
 - Start-Line (Request-Line or Status-Line)
 - HTTP Headers (Zero or more key-value lines)

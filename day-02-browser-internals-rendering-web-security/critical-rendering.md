@@ -39,7 +39,7 @@ a html markup
     </html>
     ```
     gets converted to a DOM tree like this
-    ![domtree](domtree.png)
+    ![domtree](images/domtree.png)
 
 HTML cannot be parsed using the regular top down or bottom up parsers.
 The reasons are:
@@ -54,11 +54,11 @@ Parsing Algorithm has 2 stages
     * an end tag (</body>)
     * text characters (Hello world)
   [algorithm in details](https://web.dev/articles/howbrowserswork#the_tokenization_algorithm) 
-  ![tokenization_state_machine](tokenization.png)
+  ![tokenization_state_machine](images/tokenization.png)
 
 * Tree Construction :  Each node emitted by the tokenizer will be processed by the tree constructor. For each token the specification defines which DOM element is relevant to it and will be created for this token. The element is added to the DOM tree, and also the stack of open elements. This stack is used to correct nesting mismatches and unclosed tags.
     [algorithm in details](https://web.dev/articles/howbrowserswork#tree_construction_algorithm)
-    ![tree_construction_algorithm](tree_construction.png)
+    ![tree_construction_algorithm](images/tree_construction.png)
 
 
 These doesn't block the parser in its working process.
@@ -92,7 +92,7 @@ Building the CSSOM tree
 * WebKit uses Flex and Bison parser generators to create parsers automatically from the CSS grammar files. As you recall from the parser introduction, Bison creates a bottom up shift-reduce parser. Firefox uses a top down parser written manually.  
 
 
-* In both cases each CSS file is parsed into a StyleSheet object. Each object contains CSS rules. The CSS rule objects contain selector and declaration objects and other objects corresponding to CSS grammar. ![css_tree](css_tree.png)
+* In both cases each CSS file is parsed into a StyleSheet object. Each object contains CSS rules. The CSS rule objects contain selector and declaration objects and other objects corresponding to CSS grammar. ![css_tree](images/css_tree.png)
 
 
 * CSS is render blocking: the browser blocks page rendering until it receives and processes all the CSS. But building the CSSOM is fast and is not displayed in the developer tools. Rather, the "Recalculate Style" metric in developer tools shows the total time it takes to parse CSS, construct the CSSOM tree, and recursively calculate computed styles. Creating the CSSOM generally takes less time than one DNS lookup.
@@ -105,7 +105,7 @@ Render Tree
 * While the DOM tree is being constructed, the browser constructs another tree, the render tree. This tree is of visual elements in the order in which they will be displayed. It is the visual representation of the document. The purpose of this tree is to enable painting the contents in their correct order. Firefox calls the elements in the render tree "frames". WebKit uses the term "renderer" or render object.
 
 
-* The renderers correspond to DOM elements, but the relation is not one to one. Non-visual DOM elements won't be inserted in the render tree. An example is the "head" element. Also elements whose display value was assigned to "none" won't appear in the tree (whereas elements with "hidden" visibility will appear in the tree). ![render_tree](render_tree.png)
+* The renderers correspond to DOM elements, but the relation is not one to one. Non-visual DOM elements won't be inserted in the render tree. An example is the "head" element. Also elements whose display value was assigned to "none" won't appear in the tree (whereas elements with "hidden" visibility will appear in the tree). ![render_tree](images/render_tree.png)
 
 
 
