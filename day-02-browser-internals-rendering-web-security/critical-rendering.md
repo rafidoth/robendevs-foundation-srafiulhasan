@@ -6,6 +6,19 @@
 
 
 
+Critical Rendering Path
+----
+* Constructing the Document Object Model (DOM) from the HTML.
+* Constructing the CSS Object Model (CSSOM) from the CSS.
+* Applying any JavaScript that alters the DOM or CSSOM.
+* Constructing the render tree from the DOM and CSSOM.
+* Perform style and layout operations on the page to see what elements fit where.
+* Paint the pixels of the elements in memory.
+* Composite the pixels if any of them overlap.
+* Physically draw all the resulting pixels to screen.
+
+
+
 HTML 5 References
 -----
 * https://html.spec.whatwg.org/multipage/parsing.html#parsing
