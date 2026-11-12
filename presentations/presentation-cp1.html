@@ -56,30 +56,35 @@ h1{font-size:clamp(32px,5.4vw,70px);line-height:1.04;letter-spacing:-.035em;font
 .card:hover .dots i{width:24px;opacity:1}
 .go{width:20px;height:20px;color:var(--c);opacity:0;transform:translateX(-10px);transition:.35s}
 .card:hover .go{opacity:1;transform:none}
-.ov{position:fixed;inset:0;z-index:20;display:flex;justify-content:flex-end;background:rgba(6,8,22,0);visibility:hidden;transition:background .35s,backdrop-filter .35s,visibility 0s .5s}
+.ov{position:fixed;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;padding:clamp(12px,4vh,40px) clamp(12px,3vw,40px);background:rgba(6,8,22,0);visibility:hidden;transition:background .35s,backdrop-filter .35s,visibility 0s .5s}
 .ov.open{background:rgba(6,8,22,.4);backdrop-filter:blur(4px);visibility:visible;transition-delay:0s}
-.panel{position:relative;width:min(520px,100%);height:100%;overflow:auto;display:flex;flex-direction:column;padding-bottom:76px;border-radius:28px 0 0 28px;background:var(--pn);border:1px solid var(--bd);border-right:0;box-shadow:-30px 0 80px -20px var(--glow);transform:translateX(104%);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
-.ov.open .panel{transform:none}
-.side{flex:none;padding:44px 34px 30px;display:flex;flex-direction:column;justify-content:flex-end;min-height:150px;color:var(--bg);background:var(--fg)}
-.side .n{display:none}
-.side h3{padding-right:46px;font-size:clamp(26px,3.2vw,36px);line-height:1.08;letter-spacing:-.025em;font-weight:800}
-.list{--c:var(--fg);position:relative;flex:1;list-style:none;padding:30px 28px 30px 46px;display:flex;flex-direction:column;justify-content:flex-start;gap:4px}
-.list::before{content:"";position:absolute;left:20px;top:46px;bottom:46px;width:2px;background:linear-gradient(var(--c),transparent);transform-origin:top;transform:scaleY(0);transition:transform .35s}
+.panel{position:relative;width:min(760px,100%);max-height:100%;overflow:auto;display:flex;flex-direction:column;border-radius:28px;background:var(--pn);border:1px solid var(--bd);box-shadow:0 30px 90px -20px var(--glow);opacity:0;transform:translateY(24px) scale(.96);transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .3s}
+.ov.open .panel{opacity:1;transform:none}
+.list{--c:var(--fg);position:relative;flex:1;list-style:none;padding:56px 36px 40px 56px;display:flex;flex-direction:column;justify-content:flex-start;gap:4px}
+.list::before{content:"";position:absolute;left:28px;top:64px;bottom:56px;width:2px;background:linear-gradient(var(--c),transparent);transform-origin:top;transform:scaleY(0);transition:transform .35s}
 .ov.open .list::before{transform:scaleY(1);transition:transform .7s .15s cubic-bezier(.3,.7,.2,1)}
 .kw{opacity:0;transform:translateX(26px);transition:opacity .25s,transform .3s}
 .ov.open .kw{opacity:1;transform:none;transition:opacity .4s calc(var(--i)*65ms + 220ms),transform .5s calc(var(--i)*65ms + 220ms) cubic-bezier(.2,.8,.2,1)}
-.row{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding:10px 14px;border:0;border-radius:12px;background:transparent;color:inherit;font:inherit;font-size:clamp(15px,1.6vw,18px);font-weight:500;text-align:left}
-.row::before{content:"";position:absolute;left:-31px;top:50%;width:10px;height:10px;margin-top:-5px;border-radius:50%;background:var(--pn);border:2px solid var(--c);transition:background .3s,transform .3s}
+.row{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding:14px 16px;border:0;border-radius:14px;background:transparent;color:var(--fg);font:inherit;font-size:clamp(20px,2.4vw,28px);font-weight:700;line-height:1.25;letter-spacing:-.01em;text-align:left}
+.row::before{content:"";position:absolute;left:-33px;top:50%;width:12px;height:12px;margin-top:-6px;border-radius:50%;background:var(--pn);border:2px solid var(--c);transition:background .3s,transform .3s}
 button.row{cursor:pointer;transition:background .25s}
 button.row:hover{background:var(--hl)}
 .has .row::before{background:var(--c)}
 .kw.on .row::before,.row:hover::before{transform:scale(1.35)}
-.ic{width:16px;height:16px;flex:none;color:var(--c);transition:transform .35s cubic-bezier(.3,1.4,.4,1)}
+.ic{width:22px;height:22px;flex:none;color:var(--c);transition:transform .35s cubic-bezier(.3,1.4,.4,1)}
 .kw.on .ic{transform:rotate(135deg)}
 .note{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .4s cubic-bezier(.2,.8,.2,1),opacity .3s}
 .note>div{overflow:hidden;min-height:0}
 .kw.on .note{grid-template-rows:1fr;opacity:1}
-.note p{margin:4px 14px 10px;padding:12px 16px;font-size:14.5px;line-height:1.55;color:var(--mut);border-left:3px solid var(--c);border-radius:0 12px 12px 0;background:var(--hl)}
+.note p{margin:4px 16px 12px;padding:16px 20px;font-size:clamp(18px,1.9vw,22px);line-height:1.6;font-weight:500;color:var(--fg);border-left:3px solid var(--c);border-radius:0 12px 12px 0;background:var(--hl)}
+.note .det{margin:8px 16px 12px;padding-left:22px;font-size:clamp(15px,1.5vw,17px);line-height:1.55;font-weight:500;color:var(--fg)}
+.note .det li{margin:2px 0}
+.note pre.code{margin:10px 16px;font-size:clamp(13px,1.25vw,15px);line-height:1.6}
+.note a{color:inherit;text-underline-offset:2px}
+.note .shot{margin:12px 16px 14px;border:1px solid var(--bd);border-radius:12px;overflow:hidden;background:#fff}
+.note .shot img{display:block;width:auto;max-width:100%;height:auto;max-height:min(58vh,560px);margin:0 auto}
+.note .shot figcaption{padding:8px 12px;font-size:13px;line-height:1.45;font-weight:600;color:#555;border-top:1px solid var(--bd);background:#fafafa}
+.panel.wide{width:min(900px,100%)}
 .x{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));right:14px;width:42px;height:42px;display:grid;place-items:center;border-radius:50%;border:1px solid var(--bd);background:var(--bar);color:var(--fg);cursor:pointer;opacity:0;transform:rotate(-90deg) scale(.5);transition:opacity .25s,transform .35s}
 .ov.open .x{opacity:1;transform:none;transition-delay:.2s}
 .ov.open .x:hover{transform:rotate(90deg)}
@@ -105,10 +110,10 @@ button.row:hover{background:var(--hl)}
 .grid.g8.f8 .card:nth-child(8){grid-column:4/span 2}
 #s4::before{content:"";position:absolute;top:0;right:0;width:min(60vmax,640px);height:min(60vmax,640px);pointer-events:none;background:radial-gradient(circle at 100% 0%,rgba(255,196,0,.26),rgba(255,196,0,.08) 42%,transparent 70%);opacity:0;transition:opacity .5s}
 #s4.active::before{opacity:1;transition-delay:.15s}
-.panel.cd{width:min(780px,100%)}
-.body{--c:var(--fg);flex:1;padding:30px 28px;display:flex;flex-direction:column;justify-content:flex-start;gap:16px;min-width:0}
-.desc{font-size:15px;line-height:1.55;color:var(--mut)}
-.code{margin:0;padding:18px 20px;overflow:auto;font:500 13.5px/1.7 ui-monospace,'SF Mono',Menlo,Consolas,monospace;color:var(--fg);background:var(--hl);border-left:3px solid var(--c);border-radius:0 14px 14px 0;white-space:pre;tab-size:2}
+.panel.cd{width:min(1000px,100%)}
+.body{--c:var(--fg);flex:1;padding:56px 36px 40px;display:flex;flex-direction:column;justify-content:flex-start;gap:16px;min-width:0}
+.desc{font-size:clamp(18px,1.9vw,22px);line-height:1.6;font-weight:500;color:var(--fg)}
+.code{margin:0;padding:18px 20px;overflow:auto;font:500 clamp(15px,1.6vw,18px)/1.7 ui-monospace,'SF Mono',Menlo,Consolas,monospace;color:var(--fg);background:var(--hl);border-left:3px solid var(--c);border-radius:0 14px 14px 0;white-space:pre;tab-size:2}
 .grid.g11{grid-template-columns:repeat(12,1fr);gap:clamp(18px,4vh,32px) clamp(24px,3.4vw,48px)}
 .grid.g11 .card{grid-column:span 3}
 .grid.g11 .card:nth-child(9){grid-column:3/span 3}
@@ -123,14 +128,16 @@ button.row:hover{background:var(--hl)}
 .toc button:hover,.toc button:focus-visible{transform:scale(1.12)}
 .toc button:hover::after,.toc button:focus-visible::after{transform:scaleX(1)}
 .toc button:focus-visible{outline:2px solid var(--fg);outline-offset:4px;border-radius:6px}
+.endnote{text-align:center;font-size:clamp(16px,2vw,24px);font-weight:600;letter-spacing:.02em;color:var(--mut)}
+.active .endnote{animation:rise .7s .3s cubic-bezier(.2,.8,.2,1) backwards}
 #s5 .head{margin-bottom:clamp(14px,3.5vh,34px)}
-.desc.big{padding:16px 20px;font-size:clamp(17px,2vw,21px);line-height:1.5;font-weight:500;color:var(--fg);background:var(--hl);border-left:3px solid var(--c);border-radius:0 14px 14px 0}
+.desc.big{padding:22px 26px;font-size:clamp(22px,2.7vw,32px);line-height:1.45;font-weight:600;color:var(--fg);background:var(--hl);border-left:3px solid var(--c);border-radius:0 14px 14px 0}
 .code b{font-weight:800}
 .code .c{color:var(--mut);font-style:italic}
 .code .s{padding:0 3px;border-radius:4px;background:var(--bd)}
 @media (max-width:760px){.grid{grid-template-columns:repeat(2,1fr)}
 .grid.g9 .card:nth-child(9){grid-column:1/-1}.grid.g11{grid-template-columns:repeat(2,1fr)}.grid.g11 .card,.grid.g11 .card:nth-child(n){grid-column:auto}.grid.g11 .card:nth-child(11){grid-column:1/-1}.grid.g8{grid-template-columns:repeat(2,1fr)}.grid.g8 .card{grid-column:auto}.grid.g8 .card:nth-child(7){grid-column:1/-1}.grid.g8.f8 .card:nth-child(7){grid-column:auto}.grid.g8.f8 .card:nth-child(8){grid-column:auto}
-.grid.g5{grid-template-columns:repeat(2,1fr)}.grid.g5 .card,.grid.g5 .card:nth-child(4){grid-column:auto}.grid.g5 .card:nth-child(5){grid-column:1/-1}.panel,.panel.cd{width:100%;border-radius:0}.side{padding:36px 24px 22px;min-height:120px}}
+.grid.g5{grid-template-columns:repeat(2,1fr)}.grid.g5 .card,.grid.g5 .card:nth-child(4){grid-column:auto}.grid.g5 .card:nth-child(5){grid-column:1/-1}.panel,.panel.cd{width:100%;border-radius:22px}.list{padding:48px 20px 28px 44px}.list::before{left:20px}.row::before{left:-27px}.body{padding:48px 20px 28px}}
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}}
 </style>
 </head>
@@ -166,6 +173,10 @@ button.row:hover{background:var(--hl)}
     <header class="head"><h1>Backend</h1></header>
     <div class="wrap"><svg id="links6" class="links"></svg><div class="grid g9" id="grid6"></div></div>
   </section>
+  <section class="slide" id="s7">
+    <header class="head"><h1>Thank You</h1></header>
+    <p class="endnote">Questions &amp; discussion</p>
+  </section>
 </main>
 
 <div class="ov" id="ov" role="dialog" aria-modal="true" aria-hidden="true">
@@ -183,7 +194,8 @@ button.row:hover{background:var(--hl)}
 </nav></div>
 
 <script>
-// Each keyword is a string, or [keyword, note]. Notes open on click.
+// Each keyword is a string, or [keyword, note], or
+// {t, n, img, code, cap} when the note needs a screenshot or a code block.
 const D0=[
  {t:"Networking Fundamentals",to:1},
  {t:"Browser Internals",to:3},
@@ -192,12 +204,72 @@ const D0=[
  {t:"Backend",to:6}
 ];
 const D=[
- {t:"Browser Initiation",k:["URL / Search Term","URL Parsing",["HSTS","Preloaded list forces HTTPS and blocks downgrade attacks."],"Punycode (IDN)","Browser Policies / Extensions"]},
- {t:"DNS Resolution",k:["Browser Cache","OS Cache","Router / ISP Cache","Recursive Resolver","Root → TLD → Authoritative NS","DNS Records (A / AAAA / CNAME)",["TTL","How long a resolver may cache an answer. Inspect it with dig."]]},
- {t:"Connection Establishment",k:["Socket Creation",["TCP 3-Way Handshake (SYN → SYN-ACK → ACK)","Both sides agree on initial sequence numbers before data flows."],"TLS Handshake","Certificate Verification","Key Exchange"]},
- {t:"Request Transmission",k:["HTTP Request","Request Line","Headers","Body","TCP / IP / Ethernet Encapsulation"]},
- {t:"Server Processing",k:["Request Parsing","Application Logic","Business Logic","Response Generation"]},
- {t:"Response Delivery",k:["HTTP Status Code","Response Headers","Response Body (JSON / HTML)","Client-Side Rendering (CSR)","Browser Rendering"]}
+ {t:"Browser Initiation",k:[
+  {t:"URL / Search Term",n:"When no protocol or valid domain name is given, the text in the address bar is sent to the browser's default search engine. Many browsers append a tag so the engine knows the visit came from the URL bar.",img:"../day-01-networking/images/image.png",cap:"Typing “arandomsearchterm” in Brave becomes a Google query, with &sourceid=chrome&ie=UTF-8 appended."},
+  {t:"URL Parsing",n:"If it is a real URL, the browser splits it into its parts. Only the scheme, host and port decide where the connection actually goes — the rest is sent to the server as the request target.",code:`https://example.com:443/index.html?id=5#section
+│        │          │      │        │     └ fragment
+│        │          │      │        └ query string
+│        │          │      └ path
+│        │          └ port
+│        └ host
+└ scheme`},
+  {t:"HSTS",n:"The browser checks its preloaded HSTS (HTTP Strict Transport Security) list — sites that asked to be contacted over HTTPS only. If the site is on the list, the request is sent over HTTPS straight away. Otherwise the first request goes over HTTP and only the response's Strict-Transport-Security header upgrades future visits; that one HTTP request can still be hit by a downgrade attack."},
+  {t:"Punycode (IDN)",n:"Hostnames are checked for characters outside a-z, A-Z, 0-9, “-” and “.”. Anything else is Punycode-encoded: münchen.de → xn--mnchen-3ya.de. This keeps DNS limited to ASCII."},
+  {t:"Browser Policies / Extensions",n:"Enterprise policies, parental controls, proxies and extensions such as ad blockers can block, redirect or modify the request before any network call happens."}
+ ]},
+ {t:"DNS Resolution",k:[
+  {t:"Browser Cache",n:"The browser first looks in its own DNS cache, where recently visited domains are stored with a TTL.",img:"../day-01-networking/images/image-1.png",cap:"brave://net-internals/#dns — www.github.com already resolved to 20.205.243.166, no packet left the machine."},
+  {t:"OS Cache",n:"systemd-resolved runs a local DNS stub on the loopback address 127.0.0.53. Pointing dig at that address returns the record straight from the OS cache, with the counting-down TTL.",img:"../day-01-networking/images/image-3.png",cap:"dig @127.0.0.53 www.robendevs.com — answered in 0 msec with TTL 2394 instead of the original 3600, so it came from cache."},
+  {t:"Router / ISP Cache",n:"The router may run its own DNS cache using the ISP's resolver. If it misses too, the ISP's DNS server answers from cache or starts the lookup for you."},
+  {t:"Recursive Resolver",n:"If no local cache has the answer, the device asks a recursive resolver — usually the ISP, or a public one such as Cloudflare (1.1.1.1) or Google (8.8.8.8). The client → resolver query is recursive (do all the work); the resolver → upstream queries are iterative (follow referrals)."},
+  {t:"Root → TLD → Authoritative NS",n:"The resolver walks the hierarchy:",code:`root servers (A–M)  ──referral──►  .com TLD  ──referral──►  authoritative NS
+                    │                  │                        │
+             knows .com servers   knows robendevs.com NS    holds the actual record
+                                                        → 93.184.216.34`},
+  {t:"DNS Records (A / AAAA / CNAME)",n:"The record type says what is stored:",code:`A      robendevs.com      → 203.0.113.10        (IPv4)
+AAAA   robendevs.com      → 2001:db8::10       (IPv6)
+CNAME  www.robendevs.com  → robendevs.com      (alias)
+MX     @robendevs.com     → mail host + priority
+TXT    SPF, DKIM, domain verification
+NS     the authoritative nameservers`},
+  {t:"TTL",n:"Every DNS answer carries a TTL that tells resolvers how long they may cache it. The domain owner sets it; from your machine you can watch it count down with dig.",img:"../day-01-networking/images/image-2.png",cap:"dig www.robendevs.com — CNAME to robendevs.com, then A 162.159.135.42, TTL 3600. The SERVER line shows 127.0.0.53:53, the local stub."}
+ ]},
+ {t:"Connection Establishment",k:[
+  {t:"Socket Creation",n:"With the IP resolved, the browser calls socket() with AF_INET and SOCK_STREAM, using the port from the URL (80 for HTTP, 443 for HTTPS). The kernel picks an ephemeral source port, and the segment gets its TCP header before being wrapped in IP and then in an Ethernet frame."},
+  {t:"TCP 3-Way Handshake",n:"Both sides agree on initial sequence numbers (ISN) before any data flows. SYN and FIN each consume one sequence number, which is why the ACK is ISN + 1.",code:`Client                              Server
+  SYN  seq=x                 ──────►
+                             ◄──────  SYN-ACK  seq=y, ack=x+1
+  ACK  seq=x+1, ack=y+1      ──────►
+  ══════════ connection open ══════════
+  data:  SEQ grows by the number of bytes sent
+         ACK = last sequence received from the other side`},
+  {t:"Connection Teardown",n:"Closing is symmetric: the closer sends FIN, the other side ACKs it and sends its own FIN, then the closer ACKs that FIN. This is why a captured close shows four packets."},
+  {t:"TLS Handshake",n:"For HTTPS, TLS runs inside the TCP connection. The client and server agree on a version, cipher and HTTP protocol, verify the certificate, and derive a shared symmetric key.",img:"../day-01-networking/images/image-4.png",cap:"Simplified TLS flow: ClientHello → ServerHello + certificate → key exchange → Finished (client) → Finished (server) → encrypted HTTP data."},
+  {t:"Certificate Verification",n:"The client checks the server's certificate against its trusted CA list, the hostname and the validity dates. If trust cannot be established, the browser aborts before any HTTP is sent."},
+  {t:"Key Exchange",n:"The client sends random bytes encrypted with the server's public key. The server decrypts them with its private key, and both derive the same symmetric master key — all later traffic uses it."},
+  {t:"ALPN / HTTP Version",n:"The ClientHello's ALPN extension lists h2 and http/1.1. The ServerHello picks one, so the HTTP version is decided during the TLS handshake, before the first request is written."}
+ ]},
+ {t:"Request Transmission",k:[
+  {t:"HTTP Request",n:"Once the encrypted tunnel is up, the browser writes the HTTP request into it. The server decrypts it with the symmetric key and parses it.",img:"../day-01-networking/images/http-request.png",cap:"RFC 9112 message shape: Request Line, zero or more header fields, a blank line, then an optional body."},
+  {t:"Request Line",n:"Three space-separated parts, ending in CRLF: method, request target and HTTP version.",code:`GET /index.html?id=5 HTTP/1.1`},
+  {t:"Headers",n:"Zero or more “Field-Name: value” lines carrying metadata such as Host, User-Agent, Accept, Cookie and Authorization. They end at the first empty line."},
+  {t:"Body",n:"Optional payload after the blank line, used by methods such as POST, PUT and PATCH. GET requests normally have no body."},
+  {t:"TCP / IP / Ethernet Encapsulation",n:"As the request moves down the stack each layer adds its own header: HTTP bytes → TCP segment (ports, sequence) → IP packet (source and destination addresses) → Ethernet frame (NIC and gateway MAC addresses)."},
+  {t:"Parsing on the Server",n:"The server reads the start line first, then the headers, then the body — exactly in that order — which is why an oversized or malformed header block can be rejected before the body is ever read."}
+ ]},
+ {t:"Server Processing",k:[
+  {t:"Request Parsing",n:"The server turns the raw bytes into a request object: method, path, query parameters, headers and body. Malformed requests get a 400 before application code runs."},
+  {t:"Application Logic",n:"Routing sends the request to a handler; middleware runs in order around it (logging, CORS, authentication, rate limiting) and can short-circuit with a response."},
+  {t:"Business Logic",n:"The controller calls services and repositories / models, which read and write databases, caches and queues, and enforce the rules of the domain."},
+  {t:"Response Generation",n:"The handler builds a status code, headers and a body — JSON for an API, HTML for a server-rendered app — and writes it back through the same connection, encrypted with the same symmetric key."}
+ ]},
+ {t:"Response Delivery",k:[
+  {t:"HTTP Status Code",n:"One number summarises the outcome: 2xx success, 3xx redirect, 4xx client error, 5xx server error. See the <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status\" target=\"_blank\" rel=\"noreferrer\">MDN status codes</a>."},
+  {t:"Response Headers",n:"Metadata the client needs to interpret the body: Content-Type, Content-Length, Cache-Control, Set-Cookie, Location and more."},
+  {t:"Response Body (JSON / HTML)",n:"An API usually returns JSON; a server-rendered application returns ready-made HTML. Responses use the same message shape as requests, with a status line instead of a request line."},
+  {t:"Client-Side Rendering (CSR)",n:"When JSON is returned, a client-side framework such as React turns it into DOM and renders the UI in the browser."},
+  {t:"Browser Rendering",n:"HTML is parsed into the DOM, CSS into the CSSOM, then render tree, layout, paint and composite produce the pixels — covered in the Browser Internals section."}
+ ]}
 ];
 const D2=[
  {t:"CORS",k:["Same-Origin Policy",["Preflight (OPTIONS)","For requests that can change data, the browser asks the server first."],"Access-Control-Allow-Origin","Allowed Methods / Headers",["Credentials","Wildcard origin does not work with credentials. Name the origin."]]},
@@ -207,13 +279,63 @@ const D2=[
  {t:"TCP/IP",k:["Application → Transport → Internet → Link",["TCP","Reliable, ordered delivery. Uses retransmission and flow control."],["IP","Addressing and routing of packets."],"Ports","Congestion Control"]}
 ];
 const D3=[
- {t:"Critical Rendering Path",k:["Constructing the Document Object Model (DOM) from the HTML","Constructing the CSS Object Model (CSSOM) from the CSS","Applying any JavaScript that alters the DOM or CSSOM","Constructing the render tree from the DOM and CSSOM","Perform style and layout operations on the page to see what elements fit where","Paint the pixels of the elements in memory","Composite the pixels if any of them overlap","Physically draw all the resulting pixels to screen"]},
- {t:"Building the DOM Tree",k:["HTML Parsing & Forgiving Nature of HTML Parsing","Parsing Algorithm: Tokenization & Tree Construction","What Doesn't Block the Parser","Preload Scanner"]},
- {t:"Building the CSSOM Tree",k:[]},
- {t:"Render Tree",k:[]},
- {t:"Layout",k:[]},
- {t:"Paint",k:[]},
- {t:"Composite",k:[]}
+ {t:"Critical Rendering Path",k:[
+  {t:"From Response to First Paint",n:"Once the connection is up and the browser receives the HTML response (SPA aside), rendering starts. TCP splits the response into segments and ACKs them: the receive window (RWND) tells the server how much the client can accept right now, and the congestion window (CWND) estimates what the network path can carry without drops. The browser starts parsing the first chunk (about 8–14 KB) while the rest is still arriving."},
+  {t:"Constructing the DOM from the HTML",n:"Markup is parsed into a tree of nodes — the browser's internal representation of the document, also exposed to JavaScript."},
+  {t:"Constructing the CSSOM from the CSS",n:"All CSS is parsed into a style tree before anything is painted."},
+  {t:"Applying JavaScript that alters the DOM or CSSOM",n:"Scripts can add, remove or restyle nodes, which may trigger another render pass."},
+  {t:"Constructing the render tree from DOM + CSSOM",n:"Only nodes that will actually be drawn make it into this tree, each paired with its computed style."},
+  {t:"Style and layout",n:"The browser works out the exact size and position of every node."},
+  {t:"Paint the pixels in memory",n:"Each visible element is filled into layers in memory."},
+  {t:"Composite overlapping pixels",n:"Overlapping layers are combined in the correct order."},
+  {t:"Draw the resulting pixels to screen",n:"The compositor hands the finished frame to the screen."}
+ ]},
+ {t:"Building the DOM Tree",k:[
+  {t:"HTML Markup → DOM Tree",n:"The parser turns nested markup into a tree of elements and text nodes.",code:`<html>
+  <body>
+    <p>Hello World</p>
+    <div><img src="example.png" /></div>
+  </body>
+</html>`,img:"../day-02-browser-internals-rendering-web-security/images/domtree.png",cap:"The same markup as a DOM tree: HTMLHtmlElement → HTMLBodyElement → HTMLParagraphElement / HTMLDivElement → Text and HTMLImageElement."},
+  {t:"Why HTML Needs Its Own Parser",n:"HTML cannot be parsed with a regular top-down or bottom-up parser: the language is forgiving, browsers keep error tolerance for well-known invalid HTML, and parsing is reentrant — a script calling document.write() can add tokens while the input is still being parsed."},
+  {t:"Parsing Stage 1: Tokenization",n:"A state machine consumes characters and emits HTML tokens: a start tag, an end tag, or text characters.",img:"../day-02-browser-internals-rendering-web-security/images/tokenization.png",cap:"Tokenizer states: Data → Tag open → Tag name / Close tag open, emitting a token on each transition."},
+  {t:"Parsing Stage 2: Tree Construction",n:"Each token is mapped to the DOM element it should create, added to the tree and pushed onto the stack of open elements. That stack is what lets the parser correct mismatched nesting and unclosed tags.",img:"../day-02-browser-internals-rendering-web-security/images/tree_construction.png",cap:"Tree construction for a minimal document: every token advances the insertion mode until the EOF token."},
+  {t:"What Doesn't Block the Parser",n:"Parsing keeps going while async / defer scripts, fonts, images and media load, and while stylesheets with a media attribute that does not match the current device are fetched."},
+  {t:"Preload Scanner",n:"Building the DOM occupies the main thread, so a lightweight second scanner reads ahead in the HTML for high-priority resources — CSS, JavaScript, fonts — and downloads them in the background. By the time the main parser reaches them they may already be in flight.",code:`<link rel="stylesheet" href="styles.css" />
+<script src="my-script.js" async><\/script>
+<img src="my-image.jpg" alt="image description" />
+<script src="another-script.js" async><\/script>`},
+  {t:"async, defer & CSS Blocking JS",n:"async downloads in parallel and runs as soon as it is ready. defer keeps order and waits for parsing to finish. CSS does not block HTML parsing or downloading, but it does block JavaScript, because scripts often query styles."}
+ ]},
+ {t:"Building the CSSOM Tree",k:[
+  {t:"CSS → Style Map",n:"The browser converts CSS rules into a tree of nodes with parent, child and sibling relationships derived from the selectors."},
+  {t:"StyleSheet, CSSRule, Selector & Declaration",n:"Each CSS file becomes a StyleSheet object made of CSSRule objects, and each rule holds selector and declaration objects.",img:"../day-02-browser-internals-rendering-web-security/images/css_tree.png",cap:"A parsed stylesheet: CSSStyleSheet → CSSRule → Selectors / Declaration → individual values."},
+  {t:"Parser Generators",n:"WebKit generates its CSS parser with Flex and Bison, which produces a bottom-up shift-reduce parser. Firefox uses a hand-written top-down parser. Both build the same StyleSheet object model."},
+  {t:"CSS Is Render-Blocking",n:"The browser blocks rendering until all CSS is received and processed, because the first paint must use the final styles."},
+  {t:"Recalculate Style",n:"Building the CSSOM is fast and is not shown separately in DevTools. The “Recalculate Style” metric covers parsing the CSS, building the CSSOM and recursively computing styles — usually less time than a single DNS lookup."}
+ ]},
+ {t:"Render Tree",k:[
+  {t:"Visual Representation of the Document",n:"While the DOM is being built, the browser builds a second tree of visual elements in the order they will be displayed. Its purpose is to let the browser paint contents in the correct order."},
+  {t:"DOM + CSSOM Combined",n:"The render tree keeps only the nodes that will actually be painted, each with its computed style attached."},
+  {t:"Not One-to-One with the DOM",n:"Non-visual elements such as head are never inserted, and neither is anything with display:none. Elements with visibility:hidden still appear, because they occupy space.",img:"../day-02-browser-internals-rendering-web-security/images/render_tree.png",cap:"The render tree mirrors only visible content; arrows show which DOM nodes feed each renderer."},
+  {t:"Frames / Renderers",n:"Firefox calls render-tree elements “frames”; WebKit calls them “renderers” or render objects."}
+ ]},
+ {t:"Layout",k:[
+  {t:"Dimensions and Location",n:"Layout determines the exact size and position of every node in the render tree."},
+  {t:"Traversal from the Root",n:"The browser starts at the root of the render tree and walks it, calculating the geometry of each object."},
+  {t:"Layout vs Reflow",n:"The first geometry calculation is called layout; later recalculations are reflows. If an image has no declared dimensions, the first layout happens without it and a reflow follows once its size is known."},
+  {t:"Avoiding Reflows",n:"Reserve space for images and media with width/height or aspect-ratio, so the page does not jump when they finally load."}
+ ]},
+ {t:"Paint",k:[
+  {t:"Filling in the Pixels",n:"Once the render tree exists and layout is done, the browser paints the pixels of each visible element in memory."},
+  {t:"Repaint Without DOM Changes",n:"A repaint can happen with no change to the DOM tree at all — for example when only a color or background changes."},
+  {t:"Paint Order",n:"Elements are painted in render-tree order so the result matches the visual stacking of the document."}
+ ]},
+ {t:"Composite",k:[
+  {t:"Overlapping Layers",n:"When sections of the document are drawn on different layers, compositing is what combines them into one frame."},
+  {t:"Correct Stacking Order",n:"The compositor ensures overlapping layers are drawn in the right order so the page renders correctly."},
+  {t:"Why Some Animations Are Cheap",n:"Compositing can move or fade an existing layer without redoing layout or paint, which is why transform and opacity animations are smoother."}
+ ]}
 ];
 const D4=[
  {t:"Closures",desc:"A function remembers variables from its outer scope, even after the outer function finishes.",code:`const counter = () => {
@@ -322,7 +444,7 @@ document.querySelectorAll('[data-i]').forEach(b=>b.innerHTML=svg(P[b.dataset.i])
 /* Cards + connecting nodes, one set per slide */
 $('#toc').innerHTML=D0.map((d,i)=>`<li style="--i:${i}"><button data-to="${d.to}">${d.t}</button></li>`).join('');
 $('#toc').onclick=e=>{const b=e.target.closest('button');if(b)go(+b.dataset.to)};
-const DECK=[{draw(){}},{d:D,g:$('#grid'),l:$('#links')},{d:D2,g:$('#grid2'),l:$('#links2')},{d:D3,g:$('#grid3'),l:$('#links3')},{d:D4,g:$('#grid4'),l:$('#links4')},{d:D5,g:$('#grid5'),l:$('#links5')},{d:D6,g:$('#grid6'),l:$('#links6')}];
+const DECK=[{draw(){}},{d:D,g:$('#grid'),l:$('#links')},{d:D2,g:$('#grid2'),l:$('#links2')},{d:D3,g:$('#grid3'),l:$('#links3')},{d:D4,g:$('#grid4'),l:$('#links4')},{d:D5,g:$('#grid5'),l:$('#links5')},{d:D6,g:$('#grid6'),l:$('#links6')},{draw(){}}];
 DECK.forEach(sl=>{
  if(!sl.d)return;
  sl.d.forEach((d,i)=>{
@@ -351,16 +473,25 @@ document.fonts&&document.fonts.ready.then(()=>DECK.forEach(sl=>sl.draw()));
 
 /* Keyword panel: opens from the clicked card, notes expand on click */
 const hl=c=>c.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/(\/\/.*)|("(?:[^"\\]|\\.)*")|\b(const|let|var|return|async|await|new|if|true)\b/g,(m,a,b,k)=>a?`<i class="c">${m}</i>`:b?`<i class="s">${m}</i>`:`<b>${m}</b>`);
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+/* keyword entries may be a string, [title, note, image, code, caption], or an object */
+const norm=k=>typeof k==='string'?{t:k}:Array.isArray(k)?{t:k[0],n:k[1],img:k[2],code:k[3],cap:k[4]}:k;
 function openP(d,i,el){
- pn.style.setProperty('--h',H[i]);pn.classList.toggle('cd',!!d.code);
- const side=`<div class="side"><h3>${d.t}</h3></div>`;
+ const items=(d.k||[]).map(norm);
+ pn.style.setProperty('--h',H[i]);pn.classList.toggle('cd',!!d.code);pn.classList.toggle('wide',!!d.img||items.some(k=>k.img));
+ const side='';
  if(d.code)pn.innerHTML=side+`<div class="body"><p class="desc kw" style="--i:0">${d.desc}</p><pre class="code kw" style="--i:1">${hl(d.code)}</pre></div>`;
  else if(d.desc)pn.innerHTML=side+`<div class="body"><p class="desc big kw" style="--i:0">${d.desc}</p></div>`;
- else pn.innerHTML=side+`<ul class="list">${d.k.map((k,j)=>{
-  const [t,n]=[].concat(k);
-  return `<li class="kw${n?' has':''}" style="--i:${j}">`+(n?`<button class="row"><span>${t}</span>${svg(P.plus,'ic')}</button><div class="note"><div><p>${n}</p></div></div>`:`<div class="row"><span>${t}</span></div>`)+`</li>`;
+ else pn.innerHTML=side+`<ul class="list">${items.map((k,j)=>{
+  const extra=(k.code?`<pre class="code">${hl(k.code)}</pre>`:'')+(k.img?`<figure class="shot"><img src="${k.img}" alt="${esc(k.cap||k.t)}" loading="lazy">${k.cap?`<figcaption>${k.cap}</figcaption>`:''}</figure>`:'');
+  const has=!!(k.n||extra);
+  return `<li class="kw${has?' has':''}" style="--i:${j}">`+(has?`<button class="row"><span>${k.t}</span>${svg(P.plus,'ic')}</button><div class="note"><div>${k.n?`<p>${k.n}</p>`:''}${extra}</div></div>`:`<div class="row"><span>${k.t}</span></div>`)+`</li>`;
  }).join('')}</ul>`;
- pn.querySelectorAll('button.row').forEach(b=>b.onclick=()=>b.parentElement.classList.toggle('on'));
+ pn.querySelectorAll('button.row').forEach(b=>b.onclick=()=>{
+  const li=b.parentElement,open=!li.classList.contains('on');
+  pn.querySelectorAll('.kw.on').forEach(x=>x.classList.remove('on'));
+  if(open)li.classList.add('on');
+ });
  ov.classList.add('open');ov.setAttribute('aria-hidden','false');
 }
 function closeP(){ov.classList.remove('open');ov.setAttribute('aria-hidden','true')}
